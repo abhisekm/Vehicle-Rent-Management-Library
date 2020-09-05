@@ -3,6 +3,7 @@ package com.abhisekm.vehiclerentmanagementexample
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.abhisekm.vehiclerentmanagementexample.ui.main.MainFragment
+import com.abhisekm.vehiclerentmanagementlibrary.Demo
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,6 +16,6 @@ class MainActivity : AppCompatActivity() {
                     .commitNow()
         }
 
-//        Demo
+        Demo.runDemo(this)
     }
 }
