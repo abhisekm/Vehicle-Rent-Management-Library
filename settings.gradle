@@ -1,0 +1,3 @@
+include ':VehicleRentManagementLibrary'
+include ':app'
+rootProject.name = "VehicleRentManagementExample"
