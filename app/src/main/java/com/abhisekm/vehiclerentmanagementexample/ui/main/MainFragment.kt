@@ -1,12 +1,18 @@
 package com.abhisekm.vehiclerentmanagementexample.ui.main
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.abhisekm.vehiclerentmanagementexample.R
+import com.abhisekm.vehiclerentmanagementexample.databinding.MainFragmentBinding
+import com.abhisekm.vehiclerentmanagementlibrary.RentalActivity
 
 class MainFragment : Fragment() {
 
@@ -18,13 +24,20 @@ class MainFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
-        return inflater.inflate(R.layout.main_fragment, container, false)
-    }
+        val binding: MainFragmentBinding = DataBindingUtil.inflate(layoutInflater,R.layout.main_fragment, container, false)
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-        // TODO: Use the ViewModel
+        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
+
+        viewModel.navigateToModule.observe(viewLifecycleOwner, Observer {
+            if(it){
+                startActivity(Intent(requireContext(), RentalActivity::class.java))
+                viewModel.doneNavigating()
+            }
+        })
+
+        return binding.root
     }
 
 }

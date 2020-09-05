@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rental_navigation.xml"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.abhisekm.vehiclerentmanagementlibrary.ui.main.view.MainFragment"
+        android:label="Rental Home"
+        tools:layout="@layout/rental_main_fragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_bookingHistoryFragment"
+            app:destination="@id/bookingHistoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookingFragment"
+        android:name="com.abhisekm.vehiclerentmanagementlibrary.ui.booking.view.BookingFragment"
+        android:label="booking_fragment"
+        tools:layout="@layout/booking_fragment" >
+        <action
+            android:id="@+id/action_bookingFragment_to_bookingHistoryFragment"
+            app:destination="@id/bookingHistoryFragment"
+            app:popUpTo="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookingHistoryFragment"
+        android:name="com.abhisekm.vehiclerentmanagementlibrary.ui.bookingHistory.view.BookingHistoryFragment"
+        android:label="booking_history_fragment"
+        tools:layout="@layout/booking_history_fragment" >
+        <action
+            android:id="@+id/action_bookingHistoryFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.abhisekm.vehiclerentmanagementlibrary.ui.details.view.DetailsFragment"
+        android:label="{title}"
+        tools:layout="@layout/details_fragment" >
+        <action
+            android:id="@+id/action_detailsFragment_to_bookingFragment"
+            app:destination="@id/bookingFragment" />
+        <argument
+            android:name="id"
+            app:argType="integer"
+            android:defaultValue="1" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+    </fragment>
+</navigation>
