@@ -46,7 +46,7 @@ class BikesAdapter(private val onClickListener: OnClickListener) : ListAdapter<B
 
         fun bind(data: Bike, onClickListener: OnClickListener) {
             binding.bikeData = data
-            binding.btnBook.setOnClickListener { onClickListener.onClick(data) }
+            binding.rootCard.setOnClickListener { onClickListener.onClick(data) }
             binding.executePendingBindings()
         }
     }

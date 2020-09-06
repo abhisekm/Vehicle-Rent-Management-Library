@@ -75,6 +75,10 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:$glide_version"
     annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
 
+    // Date Time Picker
+    implementation 'com.google.android.material:material:1.2.1' //In order to prevent unnecessary dependency conflicts, you need to rely on the google material library yourself starting from 0.0.3
+    implementation 'com.github.loperSeven:DateTimePicker:0.1.1'//Please see the jitpack logo at the top for the specific version, only supports androidx
+
     // Testing
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

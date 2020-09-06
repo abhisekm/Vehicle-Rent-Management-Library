@@ -26,6 +26,12 @@
             android:id="@+id/action_bookingFragment_to_bookingHistoryFragment"
             app:destination="@id/bookingHistoryFragment"
             app:popUpTo="@id/mainFragment" />
+        <argument
+            android:name="bikeId"
+            app:argType="integer" />
+        <argument
+            android:name="tripId"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/bookingHistoryFragment"

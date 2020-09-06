@@ -30,7 +30,7 @@
             app:autoSizeMaxTextSize="30sp"
             app:autoSizeMinTextSize="18sp"
             app:autoSizeTextType="uniform"
-            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:layout_constraintBottom_toTopOf="@+id/btnPay"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
