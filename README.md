@@ -2,6 +2,9 @@
 
 A simple Vehicle management demo library
 
+[![](https://jitpack.io/v/abhisekm/Vehicle-Rent-Management-Library.svg)](https://jitpack.io/#abhisekm/Vehicle-Rent-Management-Library)
+
+
 ## App Navigation Chart
 ![App Navigation](https://i.ibb.co/pz41vX6/rental-nav.png)
 
@@ -21,7 +24,7 @@ A simple Vehicle management demo library
  2. Add to your build.gradle file
  ```
  dependencies {
-	        implementation 'com.github.abhisekm:Vehicle-Rent-Management-Library:Tag'
+	        implementation 'com.github.abhisekm:Vehicle-Rent-Management-Library:0.2.0'
 	}
  ```
  
