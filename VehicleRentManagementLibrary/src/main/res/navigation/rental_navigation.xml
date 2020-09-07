@@ -20,8 +20,8 @@
     <fragment
         android:id="@+id/bookingFragment"
         android:name="com.abhisekm.vehiclerentmanagementlibrary.ui.booking.view.BookingFragment"
-        android:label="booking_fragment"
-        tools:layout="@layout/booking_fragment" >
+        android:label="Rental Payment"
+        tools:layout="@layout/booking_fragment">
         <action
             android:id="@+id/action_bookingFragment_to_bookingHistoryFragment"
             app:destination="@id/bookingHistoryFragment"
@@ -36,8 +36,8 @@
     <fragment
         android:id="@+id/bookingHistoryFragment"
         android:name="com.abhisekm.vehiclerentmanagementlibrary.ui.bookingHistory.view.BookingHistoryFragment"
-        android:label="booking_history_fragment"
-        tools:layout="@layout/booking_history_fragment" >
+        android:label="Booking History"
+        tools:layout="@layout/booking_history_fragment">
         <action
             android:id="@+id/action_bookingHistoryFragment_to_mainFragment"
             app:destination="@id/mainFragment"

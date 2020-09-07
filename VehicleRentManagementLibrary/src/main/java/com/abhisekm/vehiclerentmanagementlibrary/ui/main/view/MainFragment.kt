@@ -41,7 +41,18 @@ class MainFragment : Fragment() {
         binding.listBikes.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         binding.listBikes.adapter = BikesAdapter(BikesAdapter.OnClickListener {
-          findNavController().navigate(MainFragmentDirections.actionMainFragmentToDetailsFragment(it.id, it.name))
+            findNavController().navigate(
+                MainFragmentDirections.actionMainFragmentToDetailsFragment(
+                    it.id,
+                    it.name
+                )
+            )
+        })
+
+        binding.viewModel?.eventNavigateToHistory?.observe(viewLifecycleOwner, {
+            it?.getContentIfNotHandled()?.let {
+                findNavController().navigate(MainFragmentDirections.actionMainFragmentToBookingHistoryFragment())
+            }
         })
 
         return binding.root

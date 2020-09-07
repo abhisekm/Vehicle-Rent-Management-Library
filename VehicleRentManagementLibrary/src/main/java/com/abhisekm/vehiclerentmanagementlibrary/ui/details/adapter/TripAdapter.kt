@@ -12,7 +12,7 @@ import com.abhisekm.vehiclerentmanagementlibrary.databinding.TripItemBinding
 import com.abhisekm.vehiclerentmanagementlibrary.domain.Trip
 
 class TripAdapter(private val onClickListener: OnClickListener) : ListAdapter<Trip, TripAdapter.TripViewHolder>(DiffCallback){
-    var productColor: String = "#000"
+    var productColor: String = "#000000"
 
     companion object DiffCallback : DiffUtil.ItemCallback<Trip>(){
         override fun areItemsTheSame(oldItem: Trip, newItem: Trip): Boolean {

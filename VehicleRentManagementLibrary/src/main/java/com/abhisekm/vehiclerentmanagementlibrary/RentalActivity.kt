@@ -2,9 +2,9 @@ package com.abhisekm.vehiclerentmanagementlibrary
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
-import com.abhisekm.vehiclerentmanagementlibrary.ui.main.view.MainFragment
 
 class RentalActivity : AppCompatActivity() {
 
@@ -14,6 +14,9 @@ class RentalActivity : AppCompatActivity() {
 
         val navController = this.findNavController(R.id.nav_host_fragment)
         NavigationUI.setupActionBarWithNavController(this, navController)
+
+        val api: String = RentalConfig.getInstance().config.api
+        Toast.makeText(this, "Api: $api", Toast.LENGTH_SHORT).show()
     }
 
     override fun onSupportNavigateUp(): Boolean {

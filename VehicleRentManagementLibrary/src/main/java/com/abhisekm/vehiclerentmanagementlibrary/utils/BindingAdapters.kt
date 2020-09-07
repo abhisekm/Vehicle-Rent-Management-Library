@@ -1,11 +1,9 @@
 package com.abhisekm.vehiclerentmanagementlibrary.utils
 
-import android.animation.AnimatorSet
-import android.animation.ObjectAnimator
 import android.graphics.Color
 import android.graphics.Paint
 import android.text.format.DateFormat
-import android.view.MotionEvent
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -13,14 +11,12 @@ import androidx.cardview.widget.CardView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.abhisekm.vehiclerentmanagementlibrary.domain.Bike
+import com.abhisekm.vehiclerentmanagementlibrary.domain.Booking
 import com.abhisekm.vehiclerentmanagementlibrary.domain.Trip
+import com.abhisekm.vehiclerentmanagementlibrary.ui.bookingHistory.adapter.BookingHistoryAdapter
 import com.abhisekm.vehiclerentmanagementlibrary.ui.details.adapter.TripAdapter
 import com.abhisekm.vehiclerentmanagementlibrary.ui.main.adapter.BikesAdapter
 import com.bumptech.glide.Glide
-import java.text.SimpleDateFormat
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
-import java.util.*
 
 
 @BindingAdapter("listData")
@@ -35,10 +31,22 @@ fun bindRecyclerViewTrip(recyclerView: RecyclerView, data: List<Trip>?) {
     adapter.submitList(data)
 }
 
+@BindingAdapter("listBooking")
+fun bindRecyclerViewBooking(recyclerView: RecyclerView, data: List<Booking>?) {
+    Log.d("Booking", "listBooking: $data")
+    val adapter = recyclerView.adapter as BookingHistoryAdapter
+    adapter.submitList(data)
+}
+
 @BindingAdapter("tripColorTheme")
 fun bindRecyclerViewColor(recyclerView: RecyclerView, productColor: String?) {
     val adapter = recyclerView.adapter as TripAdapter
-    adapter.productColor = productColor ?: "#000"
+    productColor?.apply {
+        if (adapter.productColor != productColor) {
+            adapter.productColor = productColor
+            adapter.notifyDataSetChanged()
+        }
+    }
 }
 
 @BindingAdapter("loadImage")
@@ -53,8 +61,8 @@ fun bindBackgroundColor(cardView: CardView, color: String) {
 }
 
 @BindingAdapter("bgColor")
-fun bindViewBackgroundColor(view: View, color: String) {
-    val bgColor = if (color.isNotEmpty()) color else "#FFFFFF"
+fun bindViewBackgroundColor(view: View, color: String?) {
+    val bgColor = if (color?.isNotEmpty() == true) color else "#FFFFFF"
     view.setBackgroundColor(Color.parseColor(bgColor))
 }
 
@@ -90,6 +98,22 @@ fun bindAmountDontHide(textView: TextView, amount: Int) {
 @BindingAdapter("tripDuration")
 fun bindTextViewTripDuration(textView: TextView, amount: Int) {
     textView.text = if (amount == -1) "Custom" else amount.toString()
+}
+
+@BindingAdapter("upcomingBooking")
+fun bindTextViewUpcomingBooking(textView: TextView, bookingCount: Int) {
+    textView.text = "You have $bookingCount Upcoming Booking"
+}
+
+@BindingAdapter("ongoingBooking")
+fun bindTextViewOngoingBooking(textView: TextView, bookingCount: Int) {
+    textView.text = "You have $bookingCount ongoing Booking"
+    textView.visibility = if (bookingCount == 0) View.GONE else View.VISIBLE
+}
+
+@BindingAdapter("bikeStatus")
+fun bindTextViewBikeStatus(textView: TextView, bikeUnlocked: Boolean) {
+    textView.text = if (bikeUnlocked) "Unlocked" else "Locked"
 }
 
 @BindingAdapter("showTime")
